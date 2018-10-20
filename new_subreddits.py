@@ -2,6 +2,7 @@ import time
 import requests
 import json
 import os
+import sys
 
 firstRun = True
 subreddits = []
@@ -30,7 +31,7 @@ def alert() :
         payload = {'token': pushover_token, 'user': pushover_user, 'message': message, 'title': 'New Subreddits'}
         r = requests.post(pushover_url, data=payload)
         if r.status_code == 200:
-            print("Notification sent!")
+            print("Notification sent!", file=sys.stdout)
 
 
 def monitor() :
@@ -61,14 +62,14 @@ if __name__ == '__main__':
         if firstRun:
             firstRun = False
             del new_subreddits[:]
-            print('The script just started... I am gathering information, please wait.')
-            print('-'*10)
-            print("New Subreddits since script started:")
+            print('The script just started... I am gathering information, please wait.', file=sys.stdout)
+            print('-' * 10, file=sys.stdout)
+            print("New Subreddits since script started:", file=sys.stdout)
             continue
 
         if len(new_subreddits) > 0:
             for sub in new_subreddits:
-                print(" - %s %s" % (sub['id'], sub['name']))
+                print(" - %s %s" % (sub['id'], sub['name']), file=sys.stdout)
             alert()
             del new_subreddits[:]
 
