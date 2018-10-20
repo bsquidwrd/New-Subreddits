@@ -8,8 +8,8 @@ RUN  mkdir /app
 COPY . /app
 
 ENV ENABLE_PUSHOVER=false
-ENV PUSHOVER_USER=
-ENV PUSHOVER_TOKEN=
+ENV PUSHOVER_USER=placeholder
+ENV PUSHOVER_TOKEN=placeholder
 ENV REDDIT_USERNAME=random_user
 
 CMD ["python", "-u", "new_subreddits.py"]
