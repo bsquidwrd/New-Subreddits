@@ -1,7 +1,7 @@
 FROM python:3-alpine
 
-RUN python -m pip install pip --upgrade
-RUN pip install requests
+RUN python -m pip install pip --upgrade --no-cache-dir
+RUN pip install requests --no-cache-dir
 
 RUN  mkdir /app
 
